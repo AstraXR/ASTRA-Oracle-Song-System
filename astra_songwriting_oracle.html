@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ASTRA's Songwriting Oracle</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Inter:wght@300;400;600&display=swap');
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(135deg, #0f0f23 0%, #1a1a2e 50%, #16213e 100%);
+            color: #e0e0e0;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+        
+        .stars {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1;
+        }
+        
+        .star {
+            position: absolute;
+            background: #ffffff;
+            border-radius: 50%;
+            animation: twinkle 3s infinite;
+        }
+        
+        @keyframes twinkle {
+            0%, 100% { opacity: 0.3; }
+            50% { opacity: 1; }
+        }
+        
+        .container {
+            position: relative;
+            z-index: 10;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+        
+        .header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+        
+        .title {
+            font-family: 'Orbitron', monospace;
+            font-size: 3rem;
+            font-weight: 900;
+            background: linear-gradient(45deg, #ff6b6b, #4ecdc4, #45b7d1, #96ceb4);
+            background-size: 400% 400%;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: gradient-shift 4s ease-in-out infinite;
+            margin-bottom: 0.5rem;
+        }
+        
+        @keyframes gradient-shift {
+            0%, 100% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+        }
+        
+        .subtitle {
+            font-size: 1.2rem;
+            color: #a0a0a0;
+            font-weight: 300;
+        }
+        
+        .game-section {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+        }
+        
+        .oracle-button {
+            display: block;
+            width: 200px;
+            height: 200px;
+            margin: 2rem auto;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border: none;
+            border-radius: 50%;
+            color: white;
+            font-family: 'Orbitron', monospace;
+            font-size: 1.2rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 0 30px rgba(102, 126, 234, 0.5);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .oracle-button:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 50px rgba(102, 126, 234, 0.8);
+        }
+        
+        .oracle-button:active {
+            transform: scale(0.95);
+        }
+        
+        .oracle-button::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+            transform: rotate(45deg);
+            animation: shine 2s infinite;
+        }
+        
+        @keyframes shine {
+            0% { transform: translateX(-100%) translateY(-100%) rotate(45deg); }
+            100% { transform: translateX(100%) translateY(100%) rotate(45deg); }
+        }
+        
+        .result-card {
+            background: linear-gradient(135deg, rgba(255, 107, 107, 0.1) 0%, rgba(78, 205, 196, 0.1) 100%);
+            border: 1px solid rgba(255, 107, 107, 0.3);
+            border-radius: 15px;
+            padding: 1.5rem;
+            margin: 1rem 0;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.5s ease;
+        }
+        
+        .result-card.show {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .result-title {
+            font-family: 'Orbitron', monospace;
+            font-size: 1.3rem;
+            color: #ff6b6b;
+            margin-bottom: 0.5rem;
+        }
+        
+        .result-content {
+            font-size: 1.1rem;
+            line-height: 1.6;
+        }
+        
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+        
+        .instruction {
+            background: rgba(255, 255, 255, 0.03);
+            border-left: 4px solid #4ecdc4;
+            padding: 1rem 1.5rem;
+            border-radius: 8px;
+            margin-bottom: 1rem;
+        }
+        
+        .section-title {
+            font-family: 'Orbitron', monospace;
+            font-size: 1.5rem;
+            color: #4ecdc4;
+            margin-bottom: 1rem;
+            text-align: center;
+        }
+        
+        @media (max-width: 768px) {
+            .title {
+                font-size: 2rem;
+            }
+            
+            .oracle-button {
+                width: 150px;
+                height: 150px;
+                font-size: 1rem;
+            }
+            
+            .container {
+                padding: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="stars" id="stars"></div>
+    
+    <div class="container">
+        <div class="header">
+            <h1 class="title">ASTRA'S ORACLE</h1>
+            <p class="subtitle">Cinematic Transformation Engine for "Everybody Wants to Rule The World"</p>
+        </div>
+        
+        <div class="game-section">
+            <h2 class="section-title">The Oracle Speaks</h2>
+            
+            <div class="instruction">
+                <strong>How to Use:</strong> Click the Oracle to receive a creative prompt that will guide your cover arrangement. Each reading combines multiple elements to create unique artistic directions for your cinematic electropop interpretation.
+            </div>
+            
+            <button class="oracle-button" id="oracleButton">
+                CONSULT<br>THE<br>ORACLE
+            </button>
+            
+            <div id="results"></div>
+        </div>
+        
+        <div class="grid">
+            <div class="game-section">
+                <h2 class="section-title">Musical Elements</h2>
+                <div class="instruction">
+                    The Oracle will guide decisions about tempo, key changes, instrumentation, and production techniques that align with your cinematic electropop vision.
+                </div>
+            </div>
+            
+            <div class="game-section">
+                <h2 class="section-title">Narrative Focus</h2>
+                <div class="instruction">
+                    Each reading provides a thematic lens for EP 2: Death, Bloodline - helping you decide which aspects of power, mortality, and legacy to emphasize.
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Create stars
+        function createStars() {
+            const starsContainer = document.getElementById('stars');
+            for (let i = 0; i < 100; i++) {
+                const star = document.createElement('div');
+                star.className = 'star';
+                star.style.left = Math.random() * 100 + '%';
+                star.style.top = Math.random() * 100 + '%';
+                star.style.width = star.style.height = Math.random() * 3 + 1 + 'px';
+                star.style.animationDelay = Math.random() * 3 + 's';
+                starsContainer.appendChild(star);
+            }
+        }
+        
+        createStars();
+        
+        // Oracle data
+        const musicalElements = [
+            "Half-time the tempo to create epic, cinematic weight",
+            "Transpose to a darker key (perhaps Em or Bm) for Death theme",
+            "Replace guitar with haunting orchestral strings",
+            "Add deep, pulsing 808 drums for modern trap influence",
+            "Use reverse reverb swells on major transitions",
+            "Layer ethereal choir pads throughout",
+            "Create a breakdown section with just vocals and minimal electronics",
+            "Add glitchy, stuttering effects to represent fractured power",
+            "Use analog synths to replace the original's digital sounds",
+            "Implement dynamic range compression for modern loudness"
+        ];
+        
+        const narrativeElements = [
+            "Focus on the cost of ambition - what dies when we seek power?",
+            "Emphasize generational trauma passing through bloodlines",
+            "Transform 'ruling the world' into 'outlasting mortality'",
+            "Make it a conversation between the living and the dead",
+            "Treat it as a villain's anthem - embrace the darkness",
+            "Focus on the isolation that comes with ultimate power",
+            "Make it about legacy - what remains after we're gone?",
+            "Transform it into a warning rather than a desire",
+            "Explore the addiction to control and its consequences",
+            "Make it about the weight of inherited expectations"
+        ];
+        
+        const productionTechniques = [
+            "Record vocals in a cathedral for natural reverb",
+            "Use vintage tape saturation on the master bus",
+            "Layer subtle field recordings of wind or distant thunder",
+            "Create spatial movement with automated panning",
+            "Use sidechain compression triggered by kick drum",
+            "Add vinyl crackle to bridge sections for nostalgia",
+            "Implement gradual high-frequency roll-off as song progresses",
+            "Use pitch-shifted vocal harmonies for otherworldly effect",
+            "Create tension with rising white noise sweeps",
+            "Use analog delay with feedback for infinite echoes"
+        ];
+        
+        const structuralChanges = [
+            "Add an extended cinematic intro (30+ seconds)",
+            "Remove the second verse and replace with instrumental break",
+            "Create a false ending followed by a powerful final chorus",
+            "Add a bridge section that completely changes the energy",
+            "Extend the outro into a haunting, fading meditation",
+            "Start with just voice and minimal accompaniment",
+            "Create multiple dynamic builds throughout",
+            "Add an interlude that samples dialogue about power",
+            "Implement a key change in the final chorus",
+            "End with solo voice and single instrument"
+        ];
+        
+        const cinematicMoods = [
+            "Epic film trailer - building to massive climax",
+            "Psychological thriller - unsettling and tense",
+            "Space opera - vast and otherworldly",
+            "Gothic horror - dark and romantic",
+            "Dystopian future - cold and electronic",
+            "Ancient mythology - timeless and primal",
+            "Film noir - smoky and mysterious",
+            "Post-apocalyptic - haunting and desolate",
+            "Royal drama - regal but tragic",
+            "Science fiction - synthetic and evolving"
+        ];
+        
+        document.getElementById('oracleButton').addEventListener('click', function() {
+            const button = this;
+            button.style.transform = 'scale(0.9)';
+            
+            setTimeout(() => {
+                button.style.transform = 'scale(1)';
+                
+                // Generate results
+                const musical = musicalElements[Math.floor(Math.random() * musicalElements.length)];
+                const narrative = narrativeElements[Math.floor(Math.random() * narrativeElements.length)];
+                const production = productionTechniques[Math.floor(Math.random() * productionTechniques.length)];
+                const structural = structuralChanges[Math.floor(Math.random() * structuralChanges.length)];
+                const mood = cinematicMoods[Math.floor(Math.random() * cinematicMoods.length)];
+                
+                displayResults(musical, narrative, production, structural, mood);
+            }, 150);
+        });
+        
+        function displayResults(musical, narrative, production, structural, mood) {
+            const resultsDiv = document.getElementById('results');
+            resultsDiv.innerHTML = '';
+            
+            const results = [
+                { title: 'Musical Direction', content: musical },
+                { title: 'Narrative Focus', content: narrative },
+                { title: 'Production Technique', content: production },
+                { title: 'Structural Change', content: structural },
+                { title: 'Cinematic Mood', content: mood }
+            ];
+            
+            results.forEach((result, index) => {
+                setTimeout(() => {
+                    const card = document.createElement('div');
+                    card.className = 'result-card';
+                    card.innerHTML = `
+                        <div class="result-title">${result.title}</div>
+                        <div class="result-content">${result.content}</div>
+                    `;
+                    resultsDiv.appendChild(card);
+                    
+                    setTimeout(() => {
+                        card.classList.add('show');
+                    }, 100);
+                }, index * 200);
+            });
+        }
+    </script>
+</body>
+</html>
