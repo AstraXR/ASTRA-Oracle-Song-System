@@ -288,6 +288,52 @@
             .container {
                 padding: 1rem;
             }
+        .floating-orb {
+            position: fixed;
+            width: 8px;
+            height: 8px;
+            background: radial-gradient(circle, rgba(78, 205, 196, 0.8) 0%, rgba(78, 205, 196, 0.2) 100%);
+            border-radius: 50%;
+            animation: float-across 15s linear infinite;
+            pointer-events: none;
+            z-index: 5;
+        }
+
+        @keyframes float-across {
+            0% { 
+                transform: translateX(-50px) translateY(50vh);
+                opacity: 0;
+            }
+            10% { opacity: 1; }
+            90% { opacity: 1; }
+            100% { 
+                transform: translateX(calc(100vw + 50px)) translateY(20vh);
+                opacity: 0;
+            }
+        }
+            .floating-rune {
+                position: fixed;
+                font-family: 'Astloch', cursive;
+                font-size: 20px;
+                color: rgba(255, 20, 147, 0.4);
+                animation: rune-drift 25s linear infinite;
+                pointer-events: none;
+                z-index: 5;
+                text-shadow: 0 0 10px rgba(78, 205, 196, 0.3);
+            }
+            
+            @keyframes rune-drift {
+                0% { 
+                    transform: translateX(-100px) translateY(80vh) rotate(0deg);
+                    opacity: 0;
+                }
+                10% { opacity: 0.8; }
+                90% { opacity: 0.8; }
+                100% { 
+                    transform: translateX(calc(100vw + 100px)) translateY(10vh) rotate(360deg);
+                    opacity: 0;
+                }
+            }
         }
     </style>
 </head>
@@ -345,8 +391,38 @@
                 starsContainer.appendChild(star);
             }
         }
+        function createFloatingOrbs() {
+            setInterval(() => {
+                const orb = document.createElement('div');
+                orb.className = 'floating-orb';
+                orb.style.top = Math.random() * 80 + 10 + 'vh';
+                document.body.appendChild(orb);
+                
+                setTimeout(() => {
+                    orb.remove();
+                }, 15000);
+            }, 3000);
+        }
+        function createFloatingRunes() {
+            const runeSymbols = ['⚡', '✦', '◊', '※', '⟐', '⬟', '⬢', '◈', '⟡', '◉'];
+            
+            setInterval(() => {
+                const rune = document.createElement('div');
+                rune.className = 'floating-rune';
+                rune.textContent = runeSymbols[Math.floor(Math.random() * runeSymbols.length)];
+                rune.style.top = Math.random() * 70 + 15 + 'vh';
+                rune.style.animationDelay = Math.random() * 5 + 's';
+                document.body.appendChild(rune);
+                
+                setTimeout(() => {
+                    rune.remove();
+                }, 25000);
+            }, 4000);
+        }
         
         createStars();
+        createFloatingOrbs();
+        createFloatingRunes();
         
         // Oracle data
         const musicalElements = [
