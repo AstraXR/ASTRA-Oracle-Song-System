@@ -135,23 +135,23 @@
         .floating-rune {
             position: fixed;
             font-family: 'Astloch', cursive;
-            font-size: 20px;
-            color: rgba(255, 20, 147, 0.4);
-            animation: rune-drift 25s linear infinite;
+            font-size: 30px;
+            color: #ff6b6b;
+            animation: rune-drift 15s linear infinite;
             pointer-events: none;
-            z-index: 5;
-            text-shadow: 0 0 10px rgba(78, 205, 196, 0.3);
+            z-index: 999;
+            text-shadow: 0 0 10px rgba(255, 107, 107, 0.8);
         }
         
         @keyframes rune-drift {
             0% { 
-                transform: translateX(-100px) translateY(80vh) rotate(0deg);
+                transform: translateX(0px) rotate(0deg);
                 opacity: 0;
             }
-            10% { opacity: 0.8; }
-            90% { opacity: 0.8; }
+            10% { opacity: 1; }
+            90% { opacity: 1; }
             100% { 
-                transform: translateX(calc(100vw + 100px)) translateY(10vh) rotate(360deg);
+                transform: translateX(calc(100vw + 100px)) rotate(360deg);
                 opacity: 0;
             }
         }
@@ -401,20 +401,27 @@
         }
         
         function createFloatingRunes() {
-            const runeSymbols = ['⚡', '✦', '◊', '※', '⟐', '⬟', '⬢', '◈', '⟡', '◉'];
+            const runeSymbols = ['A', 'S', 'T', 'R', 'A', '★', '♦', '●'];
             
             setInterval(() => {
                 const rune = document.createElement('div');
                 rune.className = 'floating-rune';
                 rune.textContent = runeSymbols[Math.floor(Math.random() * runeSymbols.length)];
                 rune.style.top = Math.random() * 70 + 15 + 'vh';
-                rune.style.animationDelay = Math.random() * 5 + 's';
+                rune.style.left = '-50px';
+                rune.style.fontSize = '30px';
+                rune.style.color = '#ff6b6b';
+                rune.style.zIndex = '999';
                 document.body.appendChild(rune);
                 
+                console.log('Rune created:', rune.textContent); // Debug log
+                
                 setTimeout(() => {
-                    rune.remove();
+                    if (rune.parentNode) {
+                        rune.remove();
+                    }
                 }, 25000);
-            }, 4000);
+            }, 2000); // Faster spawn rate for testing
         }
         
         createStars();
