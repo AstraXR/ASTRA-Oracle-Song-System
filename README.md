@@ -29,7 +29,7 @@ Deployed on [GitHub Pages](https://astraxr.github.io/ASTRA-Oracle-Song-System/).
 ---
 
 ## ❤️ Credits
-- **ASTRA XR**: creator, performer, dreamweaver  
+- **ASTRA**: cinematic electropop multimedia artist (singularity woman)
 - Thanks to **A. G. Cook** and **Beau Sorenson** for inspiration! 
 
 
