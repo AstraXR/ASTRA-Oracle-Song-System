@@ -25,7 +25,24 @@
             min-height: 100vh;
             overflow-x: hidden;
         }
+        .astra-logo {
+            width: 60px;
+            height: 60px;
+            margin-bottom: 1rem;
+            filter: drop-shadow(0 0 20px rgba(78, 205, 196, 0.5));
+            animation: logo-glow 3s ease-in-out infinite alternate;
+        }
         
+        @keyframes logo-glow {
+            0% { 
+                filter: drop-shadow(0 0 20px rgba(78, 205, 196, 0.5));
+                transform: scale(1);
+            }
+            100% { 
+                filter: drop-shadow(0 0 30px rgba(78, 205, 196, 0.8));
+                transform: scale(1.05);
+            }
+        }
         
         .stars {
             position: fixed;
