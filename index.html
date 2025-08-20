@@ -25,6 +25,7 @@
             min-height: 100vh;
             overflow-x: hidden;
         }
+        /*
         .astra-logo {
             width: 70px;
             height: 70px;
@@ -40,6 +41,33 @@
             100% { 
                 filter: drop-shadow(0 0 30px rgba(78, 205, 196, 0.8));
                 transform: scale(1.05);
+            }
+        }*/
+        .astra-logo {
+            width: 75px;
+            height: 75px;
+            margin-bottom: 1rem;
+            filter: 
+                drop-shadow(0 0 10px rgba(255, 20, 147, 0.6))
+                drop-shadow(0 0 20px rgba(78, 205, 196, 0.4))
+                drop-shadow(0 0 30px rgba(148, 0, 211, 0.3));
+            animation: logo-pulse 4s ease-in-out infinite;
+        }
+        
+        @keyframes logo-pulse {
+            0%, 100% { 
+                transform: scale(1);
+                filter: 
+                    drop-shadow(0 0 10px rgba(255, 20, 147, 0.6))
+                    drop-shadow(0 0 20px rgba(78, 205, 196, 0.4))
+                    drop-shadow(0 0 30px rgba(148, 0, 211, 0.3));
+            }
+            50% { 
+                transform: scale(1.1);
+                filter: 
+                    drop-shadow(0 0 15px rgba(255, 20, 147, 0.8))
+                    drop-shadow(0 0 25px rgba(78, 205, 196, 0.6))
+                    drop-shadow(0 0 35px rgba(148, 0, 211, 0.5));
             }
         }
         
