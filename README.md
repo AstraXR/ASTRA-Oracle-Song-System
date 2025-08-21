@@ -1,4 +1,5 @@
 # 🌌 ASTRA Oracle Song System
+The Singularity Opera
 
 Created for **A. G. Cook’s Songwriting Class** 💿✨
 
@@ -13,7 +14,8 @@ Deployed on [GitHub Pages](https://astraxr.github.io/ASTRA-Oracle-Song-System/).
 ## 📸 Visuals
 
 ### Cover Experiments
-![Everybody Wants to Rule the World](images/cover1.jpeg)
+![Everybody Wants to Rule the World](images/cover1.jpeg)<img width="1024" height="1024" alt="Cyborg_goddess_holding_a_giant_gacha_machine_that_0439f446-d957-4bfb-832e-3ee03b316f05_2" src="https://github.com/user-attachments/assets/6a1b803e-b725-4520-a546-4638e038e713" />
+
 
 ### Interface Snapshots
 ![Screenshot of System](images/screenshot1.png)
