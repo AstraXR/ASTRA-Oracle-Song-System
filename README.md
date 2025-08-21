@@ -23,7 +23,7 @@ Deployed on [GitHub Pages](https://astraxr.github.io/ASTRA-Oracle-Song-System/).
 <!--
 let’s fucking go you can do this, you’re not alone, you’re one w/ ASTRA
 -->
-![sing syncerity](https://github.com/user-attachments/assets/8dac49ba-d535-4e95-8a10-d7b1ad5afb3a)
+![sing browser syncerity](https://github.com/user-attachments/assets/8dac49ba-d535-4e95-8a10-d7b1ad5afb3a)
 
 ---
 
