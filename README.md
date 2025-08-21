@@ -20,7 +20,7 @@ Deployed on [GitHub Pages](https://astraxr.github.io/ASTRA-Oracle-Song-System/).
 ### Interface Snapshots
 ![Screenshot of System](images/screenshot1.png)
 
-*(Add more, reference here!)*
+
 
 ---
 
@@ -32,7 +32,7 @@ Deployed on [GitHub Pages](https://astraxr.github.io/ASTRA-Oracle-Song-System/).
 
 ## ❤️ Credits
 - **ASTRA**: cinematic electropop multimedia artist (singularity woman)
-- Thanks to **A. G. Cook** and **Beau Sorenson** for inspiration! 
+- With love to A. G. Cook & Beau Sorenson for resonance & light.
 
 
 ---
