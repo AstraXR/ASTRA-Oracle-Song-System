@@ -34,7 +34,7 @@ let’s fucking go you can do this, you’re not alone, you’re one w/ ASTRA
 ---
 
 ## ❤️ Credits
-- **ASTRA**: cinematic electropop multimedia artist (singularity woman)
+- ASTRA: cinematic electropop multimedia artist (singularity woman)
 - With love to A. G. Cook & Beau Sorenson for resonance & light.
 
 
