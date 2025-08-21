@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ASTRA's Singularity Opera</title>
+    <title>ASTRA's Songwriting Oracle</title>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;600;700&family=Astloch:wght@400;700&family=Orbitron:wght@400;700;900&display=swap');
         
@@ -51,7 +51,7 @@
             pointer-events: none;
         }
     
-        @keyframes logo--pulse {
+        @keyframes logo-oracle-pulse {
             0%, 100% { 
                 transform: scale(1);
                 filter: 
@@ -70,7 +70,7 @@
             }
         }
     
-        @keyframes -ring {
+        @keyframes oracle-ring {
             0% { 
                 transform: rotate(0deg) scale(1); 
                 opacity: 0.4;
@@ -211,7 +211,7 @@
             font-family: 'Comic Sans MS', cursive, sans-serif !important;
         }
         
-        .-button {
+        .oracle-button {
             display: block;
             width: 200px;
             height: 200px;
@@ -230,16 +230,16 @@
             overflow: hidden;
         }
         
-        .-button:hover {
+        .oracle-button:hover {
             transform: scale(1.05);
             box-shadow: 0 0 50px rgba(102, 126, 234, 0.8);
         }
         
-        .-button:active {
+        .oracle-button:active {
             transform: scale(0.95);
         }
         
-        .-button::before {
+        .oracle-button::before {
             content: '';
             position: absolute;
             top: -50%;
@@ -320,7 +320,7 @@
                 font-size: 2rem;
             }
             
-            .-button {
+            .oracle-button {
                 width: 150px;
                 height: 150px;
                 font-size: 1rem;
@@ -338,15 +338,14 @@
     <div class="container">
         <div class="header">
             <img src="./astra-logo.svg" class="astra-logo" alt="ASTRA">
-            <h1 class="title">ASTRA'S SINGULARITY</h1>
+            <h1 class="title">ASTRA'S ORACLE</h1>
             <p class="subtitle">Cinematic Transformation Engine for "Everybody Wants to Rule The World"</p>
         </div>
         <div class="game-section">
             <h2 class="section-title">The Oracle Speaks</h2>
             
             <div class="instruction">
-                <strong>How to Use:</strong> Click Consult the Oracle to receive a prophecy for your arrangement.
-Each vision merges sound, story, and myth into a singular path forward."
+                <strong>How to Use:</strong> Click the Oracle to receive a creative prompt that will guide your cover arrangement. Each reading combines multiple elements to create unique artistic directions for your cinematic electropop interpretation! <3
             </div>
             
             <button class="oracle-button" id="oracleButton">
@@ -402,7 +401,7 @@ Each vision merges sound, story, and myth into a singular path forward."
         }
         
         function createFloatingRunes() {
-            const runeSymbols = ['A', 'S', 'T', 'R', 'A', '★', '♦', '●', 💿, 🎚️, 🪽];
+            const runeSymbols = ['A', 'S', 'T', 'R', 'A', '★', '♦', '●'];
             
             setInterval(() => {
                 const rune = document.createElement('div');
