@@ -18,7 +18,8 @@ Deployed on [GitHub Pages](https://astraxr.github.io/ASTRA-Oracle-Song-System/).
 
 
 ### Interface Snapshots
-![Screenshot of System](images/screenshot1.png)
+<img width="1728" height="1117" alt="Astra_Oracle_Interface" src="https://github.com/user-attachments/assets/3526527d-11e6-44de-a846-3987ba338ec7" />
+
 
 
 
